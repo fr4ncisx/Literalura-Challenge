@@ -14,12 +14,60 @@ This is the challenge of Alura Oracle Next Education, the purpose is to practise
 
 
 ## Folder Structure
+```
 
+src
+│
+├── entities ───────── Entities for our database
+│
+├── menu ───────────── Main menu of the application, a menu list messages and a validator
+│
+├── models ─────────── Models for API
+│    │
+│    └── dto ───────── Filter to send the data from dto not entities.
+│
+├── repository ─────── Applying Spring Data JPA to make the queries.
+│
+└── service ────────── All our persistence logics and api consumption.
+
+```
 
 ## Technologies
+- Java
 
+- Spring Boot
+
+- Spring Data JPA
+
+- Hibernate ORM
+
+- MySQL
+
+- Gutendex API
 
 ## Demo
+
+#### Main menu
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/595fba29-8475-493d-98b6-51733bbc0113)
+
+#### Option 1
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/abe1db27-dab0-489a-a3a9-1bbbcda5e10f)
+#### Option 2
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/09cf8776-af2c-4950-bab0-d68927c671b6)
+#### Option 3
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/603ff1f1-2ff7-4488-b813-298b6f22499a)
+#### Option 4
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/4fde35fa-e987-4b1e-93ed-61c1d9f2fb06)
+
+#### Option 5
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/5f5ac7bb-d04f-40b4-bfea-f2cc99365d97)
+
+#### Option 6
+![image](https://github.com/fr4ncisx/Literalura-Challenge/assets/103074521/f06fc394-d668-479a-9281-5354549951d1)
+
+
+
+
 
 
 
