@@ -13,11 +13,18 @@ This is the challenge of Alura Oracle Next Education, the purpose is to practise
 [Demo images](#demo)
 
 ## List of fixes or bugs
-<b><h4>HotFix v1.01: 11/06/2024</h4></b>
+### Hotfixes:
+<b>HotFix v1.01 (11 June 2024
+):</b>
+
 - Fixed showing language as a code, now showing full language title
   - Ex. When getting the book from Gutendex it was showing Idioma with code language: 'en', 'es', 'fr'.
   - Updated using getFullLanguageName(languageCode) static method to convert the language code to the full language  title in spanish.  
 - Fixed when retrieving Books, Authors, or Top Books, there was an empty repose. Forgot to write the else to send a message there were no elements in our database.
+
+### Limited:
+First Release:
+- As mainly the majority books are written in English, Spanish and French. The application is limited for these three languages but no worries if the book is written in another language it will show as N/A.
 ## Folder Structure
 ```
 
