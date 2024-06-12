@@ -23,8 +23,8 @@ This is the challenge of Alura Oracle Next Education, the purpose is to practise
 - Fixed when retrieving Books, Authors, or Top Books, there was an empty repose. Forgot to write the else to send a message there were no elements in our database.
 
 ### Limited:
-First Release:
-- As mainly the majority books are written in English, Spanish and French. The application is limited for these three languages but no worries if the book is written in another language it will show as N/A.
+First Release V1.00/01:
+- As mainly the majority books are written in English, Spanish or French. The application is limited for these three languages but no worries if the book is written in another language it will show as N/A.
 ## Folder Structure
 ```
 
