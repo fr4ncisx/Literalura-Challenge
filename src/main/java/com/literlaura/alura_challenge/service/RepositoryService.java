@@ -43,10 +43,15 @@ public class RepositoryService {
     }
     public void findAllBooks(){
         List<BooksDTO> books = booksDTOconverter(bookRepository.findAll());
-        books.forEach(b -> System.out.printf("──────────────────────────────────────────────────\n" +
-                        "Titulo del libro: %s\nNombre del autor: %s\nFecha de nacimiento: %s-%s\nIdioma: %s \nDescargas Totales: %s\n" +
-                        "──────────────────────────────────────────────────",
-                b.title(), b.author().getName(), b.author().getBirthYear(), b.author().getDeathYear(), InputValidator.getFullLanguageName(b.language()), b.downloads()));
+        if(!books.isEmpty()) {
+            books.forEach(b -> System.out.printf("──────────────────────────────────────────────────\n" +
+                            "Titulo del libro: %s\nNombre del autor: %s\nFecha de nacimiento: %s-%s\nIdioma: %s \nDescargas Totales: %s\n" +
+                            "──────────────────────────────────────────────────",
+                    b.title(), b.author().getName(), b.author().getBirthYear(), b.author().getDeathYear(), InputValidator.getFullLanguageName(b.language()), b.downloads()));
+        } else {
+            System.out.println("──────────────────────────────────────────────────");
+            System.out.println("Al parecer nuestra base de datos está vacia, que tal si intentas agregar libros en nuestra base de datos?");
+        }
     }
     public void findFirstBook(String json) {
         ResultsAPI results = dataConverter.convertData(json, ResultsAPI.class);
@@ -63,9 +68,13 @@ public class RepositoryService {
                 System.out.println("El libro ya existe en la base de datos.");
                 System.out.println(existingBook.get());
             } else {
-                Books newBook = new Books(booksAPI);
-                System.out.println(newBook);
-                bookRepository.save(newBook);
+                Books books = new Books(booksAPI);
+                System.out.printf("\nTitulo del libro: %s \nNombre del autor: %s \nFecha de nacimiento: %s-%s \nIdioma: %s \nDescargas totales: %s\n",
+                        books.getTitle(), books.getAuthor().getName(), books.getAuthor().getBirthYear(),books.getAuthor().getDeathYear(),
+                        InputValidator.getFullLanguageName(books.getLanguage()), books.getDownloads());
+                //System.out.println(newBook);
+                bookRepository.save(books);
+                System.out.println("──────────────────────────────────────────────────");
                 System.out.println("El libro se ha guardado exitosamente en la base de datos.");
             }
             /*
@@ -97,6 +106,9 @@ public class RepositoryService {
                 System.out.println("──────────────────────────────────────────────────");
                 System.out.println("No pudimos encontrar autores vivos en el año " + year);
             }
+        } else {
+            System.out.println("──────────────────────────────────────────────────");
+            System.out.println("Al parecer nuestra base de datos está vacia, que tal si intentas agregar libros en nuestra base de datos?");
         }
     }
 
@@ -121,7 +133,11 @@ public class RepositoryService {
                     .sorted(Comparator.comparing(BooksDTO::downloads).reversed())
                     .limit(10)
                     .toList();
-            if (books.size() < 10) {
+            if (books.size() == 1) {
+                System.out.printf("Solo se encontró %s libro, pero no te preocupes te lo mostraré igual!\n", books.size());
+                System.out.println("──────────────────────────────────────────────────");
+            }
+            if (books.size() >= 2 && books.size() <= 10 ) {
                 System.out.printf("Solo se encontraron %s libros, pero no te preocupes te mostraremos los mejores!\n", books.size());
                 System.out.println("──────────────────────────────────────────────────");
             }
@@ -129,7 +145,10 @@ public class RepositoryService {
             books.stream().forEach(b -> System.out.printf("──────────────────────────────────────────────────\n" +
                             "Titulo del libro: %s\nNombre del autor: %s\nFecha de nacimiento: %s-%s\nIdioma: %s \nDescargas Totales: %s\n" +
                             "──────────────────────────────────────────────────",
-                    b.title(), b.author().getName(), b.author().getBirthYear(), b.author().getDeathYear(), b.language(), b.downloads()));
+                    b.title(), b.author().getName(), b.author().getBirthYear(), b.author().getDeathYear(), InputValidator.getFullLanguageName(b.language()), b.downloads()));
+        } else {
+            System.out.println("──────────────────────────────────────────────────");
+            System.out.println("Al parecer nuestra base de datos está vacia, que tal si intentas agregar libros en nuestra base de datos?");
         }
     }
 
