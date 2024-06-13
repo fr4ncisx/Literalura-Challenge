@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Author")
+@Table(name = "author")
 public class Authors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,8 @@ public class Authors {
     private String name;
     private Long birthYear;
     private Long deathYear;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Books> books = new ArrayList<>();
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Books> books;
 
     public Authors() {
     }
@@ -64,6 +64,9 @@ public class Authors {
 
     public void setBooks(List<Books> books) {
         this.books = books;
+    }
+    public String getBirthAndDeathYear(){
+        return filterNullYears();
     }
 
     private String filterNullYears(){

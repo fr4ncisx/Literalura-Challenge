@@ -1,16 +1,17 @@
 package com.literlaura.alura_challenge.entities;
 
+import com.literlaura.alura_challenge.menu.InputValidator;
 import com.literlaura.alura_challenge.models.BooksAPI;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Books")
+@Table(name = "books")
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "author_id")
     private Authors author;
     private String language;
@@ -83,10 +84,10 @@ public class Books {
     public String toString() {
         return "───────────────────────────────────────────────── \n" +
                 "Titulo del libro: " + getTitle()+
-                "\n" + getAuthor()
-                /*+"\nNombre del autor: " + getAuthor().getName() +
-                "\nFecha de nacimiento: " + getAuthor().getBirthYear()+"-"+getAuthor().getDeathYear()*/ +
-                "\nIdioma: " + getLanguage() +
+                //"\n" + getAuthor()
+                "\nNombre del autor: " + getAuthor().getName() +
+                "\nFecha de nacimiento: " + getAuthor().getBirthAndDeathYear() +
+                "\nIdioma: " + InputValidator.getFullLanguageName(getLanguage()) +
                 "\nDescargas: " + getDownloads() +"\n"+
                 "─────────────────────────────────────────────────";
     }
