@@ -4,7 +4,7 @@ This is the challenge of Alura Oracle Next Education, the purpose is to practise
 
 
 ## Quickstart
-[Last fixes or bugs](List-of-fixes-or-bugs)
+[List fixes or bugs](#list-of-fixes-or-bugs)
 
 [Folder Structure](#folder-structure)
 
